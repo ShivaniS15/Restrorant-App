@@ -6,3 +6,6 @@ const firebaseConfig = {
   messagingSenderId: "796860913356",
   appId: "1:796860913356:web:b66d336bf20acf9c565469"
 };
+
+1.overflow-x: hidden;
+https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_overflow-x
