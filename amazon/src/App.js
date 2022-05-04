@@ -7,11 +7,13 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
+    <Header/>
       <Routes>
-      <Route path="/" >
-      <Header/>
+      <Route path="/header" element={<Header/>}/>
+      {/* <Route path="/" >
+      
       <Home/>
-      </Route>
+      </Route> */}
 
       </Routes>
     </div>
