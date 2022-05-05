@@ -7,14 +7,22 @@ import { AnimatePresence } from 'framer-motion';
 import { MdShoppingBasket } from "react-icons/md";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../firebase.config';
+import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 const Header = () => {
 
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
+  const [{user}, dispatch]=useStateValue();
+
+
   const login=async () =>{
-  const response=await signInWithPopup(firebaseAuth, provider); 
-  console.log(response);
+    const {user:{refreshToken, providerData}}= await signInWithPopup(firebaseAuth, provider);
+dispatch({
+    type:actionType.SET_USER,
+    user:providerData[0]
+})
   };
 
   return (
@@ -51,8 +59,8 @@ const Header = () => {
 {/* Avatar */}
 <motion.img
 whileTap={{ scale: 0.6 }}
- src={Avatar}
- className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl ml-6 -top-2 cursor-pointer"
+src={user ? user.photoURL:Avatar}
+className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl ml-6 -top-2 cursor-pointer rounded-full"
  alt="userprofile"
  onClick={login}
  />
