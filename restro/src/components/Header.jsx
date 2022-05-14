@@ -10,7 +10,7 @@ import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
-import { AnimatePresence } from "framer-motion";
+
 const Header = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   return (
-  <AnimatePresence exitBeforeEnter>
+  
 
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
       {/* desktop & tablet */}
@@ -217,7 +217,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-    </AnimatePresence>
+    
   );
 };
 
